@@ -1,3 +1,8 @@
+/* Author:  Hannah Latouf
+   welcomecustomer- servlet that redirects to customer landing page after successful authentication
+   More Comments to come:
+*/
+
 package spend;
 
 import javax.servlet.annotation.WebServlet;
