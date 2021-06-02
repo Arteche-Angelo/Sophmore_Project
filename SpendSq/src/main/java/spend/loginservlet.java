@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 /* Author:  Hannah Latouf
 loginservlet - servlet to take username and pasasword from form and test against MySql
-More Comments to come:
+More Comments to come: 
 */
 @WebServlet("/loginservlet")
 public class loginservlet extends HttpServlet {
