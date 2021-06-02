@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class welcomecustomer
  */
+/* welcome customer */
+
 @WebServlet("/welcomecustomer")
 public class welcomecustomer extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -3,6 +3,7 @@
    loginmysql - class that calls MySql via JDBC to test username and pasasword - returns true or false
    More Comments to come:
 */
+/* loginmysql */
 
 package spend;
 

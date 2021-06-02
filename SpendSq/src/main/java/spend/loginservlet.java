@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 loginservlet - servlet to take username and pasasword from form and test against MySql
 More Comments to come: 
 */
+/* loginservlet */
+
 @WebServlet("/loginservlet")
 public class loginservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
