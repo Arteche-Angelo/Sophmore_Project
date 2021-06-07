@@ -1,3 +1,6 @@
+//Author:  Hannah Latouf//
+
+
 package spend;
 
 import java.io.IOException;
