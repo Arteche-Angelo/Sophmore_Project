@@ -34,6 +34,7 @@ public class regcustomer extends HttpServlet {
 		          
 		    out.close();  
 		    }    
+  
 
-
+	
 }

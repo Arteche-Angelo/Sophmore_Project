@@ -48,4 +48,6 @@ public class regservlet extends HttpServlet {
 	    out.close();  
 	    }  
 	
+	
+	
 }
