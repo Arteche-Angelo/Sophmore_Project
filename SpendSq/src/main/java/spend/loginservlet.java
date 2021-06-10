@@ -25,14 +25,16 @@ More Comments to come:
 @WebServlet("/loginservlet")
 public class loginservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
- 
+	public static String username = null;
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)  
 	        throws ServletException, IOException {  
 	  
 	    response.setContentType("text/html");  
 	    PrintWriter out = response.getWriter();  
-	          
-	    String n=request.getParameter("uname");  
+	    
+	    String n = request.getParameter("uname");
+	    loginservlet.username= n;
 	    String p=request.getParameter("psw");  
 	          
 	    if(loginmysql.validate(n, p)){  
@@ -43,9 +45,10 @@ public class loginservlet extends HttpServlet {
 	        out.print("Sorry username or password error");  
 	        RequestDispatcher rd=request.getRequestDispatcher("loginpage.html");  
 	        rd.include(request,response);  
-	    }  
+	    } 
 	          
-	    out.close();  
-	    }  
-	
-}
+	    out.close(); 
+	    }
+
+
+	}
