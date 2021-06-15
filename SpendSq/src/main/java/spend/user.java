@@ -1,3 +1,9 @@
+
+/* Author:  Hannah Latouf 
+  
+*/
+
+
 package spend;
 
 public class user {
