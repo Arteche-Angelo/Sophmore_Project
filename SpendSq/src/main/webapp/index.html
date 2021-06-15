@@ -21,16 +21,16 @@
     </head>
 
 <body>
-    
+
     <div class="sequence">
-  
+
       <div class="seq-preloader">
         <svg width="39" height="16" viewBox="0 0 39 16" xmlns="http://www.w3.org/2000/svg" class="seq-preload-indicator"><g fill="#F96D38"><path class="seq-preload-circle seq-preload-circle-1" d="M3.999 12.012c2.209 0 3.999-1.791 3.999-3.999s-1.79-3.999-3.999-3.999-3.999 1.791-3.999 3.999 1.79 3.999 3.999 3.999z"/><path class="seq-preload-circle seq-preload-circle-2" d="M15.996 13.468c3.018 0 5.465-2.447 5.465-5.466 0-3.018-2.447-5.465-5.465-5.465-3.019 0-5.466 2.447-5.466 5.465 0 3.019 2.447 5.466 5.466 5.466z"/><path class="seq-preload-circle seq-preload-circle-3" d="M31.322 15.334c4.049 0 7.332-3.282 7.332-7.332 0-4.049-3.282-7.332-7.332-7.332s-7.332 3.283-7.332 7.332c0 4.05 3.283 7.332 7.332 7.332z"/></g></svg>
       </div>
-      
+
     </div>
-    
-  
+
+
         <nav>
           <div class="logo">
               <img src="img/logo.png" alt="">
@@ -46,7 +46,7 @@
             <li><a href="#5"><i class="fa fa-envelope"></i> <em>About</em></a></li>
           </ul>
         </nav>
-        
+
         <div class="slides">
           <div class="slide" id="1">
             <div class="content first-content">
@@ -94,13 +94,22 @@
                                                 <p>Transactions will be viewed here. Criteria being Date, Vendor, Category, and Date.</p>
                                             </div>
 						<!--Author: Angelo Arteche-->
-                                            <form  method ='post'>
+                                            <form  action="http://localhost:8080/SpendSq/transactionservlet " method ='post'>
                                               <div class="container">
 
                                                 <div class="item" style="flex: 2">
                                                   <div class="container">
                                                     <label class="item" style="flex: 10%; color: white; ">Category: </label>
-                                                      <input class="item" style="flex: 90%" type='text' name='Category'/> <br />
+                                                      <select class="item" style="flex: 90%" name='Category'/>
+                                                      <option value="Other">Other</option>
+                                                      <option value="Entertainment">Entertainment</option>
+                                                      <option value="Food">Food</option>
+                                                      <option value="Home">Home</option>
+                                                      <option value="Medical">Medical</option>
+                                                      <option value="Travel">Travel</option>
+                                                      <option value="Utilities">Utilities</option>
+                                                    </select>
+                                                       <br />
                                                       </div>
                                                     </div>
 
@@ -115,7 +124,7 @@
                                                 <div class="item" style="flex: 2">
                                                   <div class="container">
                                                     <label class="item" style="flex: 10%; color: white; ">Amount: </label>
-                                                      <input class="item" style="flex: 90%" type='number' step="any" name='Category'/> <br />
+                                                      <input class="item" style="flex: 90%" type='number' step="any" name='Amount'/> <br />
                                                       </div>
                                                     </div>
 
@@ -154,7 +163,9 @@
                                         <div class="col-md-9">
                                             <div class="left-content">
                                                 <h2>Section 2</h2>
-                                                <p>Maybe something else here.</p>
+                                                <br>
+                                                <iframe src="http://localhost:8080/SpendSq/displaytransactions" style="color:white;">
+                                                </iframe>
                                                 <div class="main-btn"><a href="#4">BUDGETS</a></div>
                                             </div>
                                         </div>
@@ -181,7 +192,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -190,7 +201,7 @@
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            
+
                                         </div>
                                         <div class="col-md-9">
                                             <div class="left-content">
@@ -228,12 +239,12 @@
               <p>Copyright &copy; 2021 Group-2 / Spend Squared</p>
           </div>
         </div>
- 
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
     <script src="js/vendor/bootstrap.min.js"></script>
-    
+
     <script src="js/datepicker.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
@@ -241,9 +252,9 @@
     <script type="text/javascript">
     $(document).ready(function() {
 
-        
 
-        // navigation click actions 
+
+        // navigation click actions
         $('.scroll-link').on('click', function(event){
             event.preventDefault();
             var sectionID = $(this).attr("data-id");
@@ -252,7 +263,7 @@
         // scroll to top action
         $('.scroll-top').on('click', function(event) {
             event.preventDefault();
-            $('html, body').animate({scrollTop:0}, 'slow');         
+            $('html, body').animate({scrollTop:0}, 'slow');
         });
         // mobile nav toggle
         $('#nav-toggle').on('click', function (event) {

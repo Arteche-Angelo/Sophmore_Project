@@ -32,13 +32,19 @@ public class welcomecustomer extends HttpServlet {
 		    response.setContentType("text/html");  
 		    PrintWriter out = response.getWriter();  
 		          
-		    String n=request.getParameter("uname");  
-		    out.print("Welcome "+n);  
+		     String n=request.getParameter("uname");
+		     if (n != loginservlet.username) {
+		    out.print("Welcome "+loginservlet.username);  
+		     }else {
+		    	 out.print("welcome "+ n );
+		     }
 		    
 		    RequestDispatcher rd=request.getRequestDispatcher("index.html");  
 	        rd.include(request,response);  
 		          
 		    out.close();  
-		    }    
+		    }
+
+	}
 	  
-}
+
