@@ -30,7 +30,7 @@ public class budgetservlet extends HttpServlet {
 	  
 	    
 	          
-	    if(Budgetsmysql.trans(category, limit, uname)){  
+	    if(budgetsmysql.trans(category, limit, uname)){  
 	    	System.out.println("connected to database");
 	    	RequestDispatcher rd=request.getRequestDispatcher("welcomecustomer");  
 	        rd.forward(request,response);

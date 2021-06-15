@@ -11,7 +11,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Budgetsmysql {  
+public class budgetsmysql {  
 public static boolean trans(String category,String limit,String uname){  
 
 	boolean status=false;  
@@ -31,7 +31,7 @@ public static boolean trans(String category,String limit,String uname){
 			System.out.println("Connected to the database spend");
 			status=true;
 			stmnt = conn1.createStatement();
-			sql="insert into transactions (category, limit, userprofile_username) values(" +"'" + category +"', '"+limit+"', '"+ uname + "');" ;
+			sql="insert into budgets (category, limit_budgets, userprofile_username) values(" +"'" + category +"', '"+limit+"', '"+ uname + "');" ;
 			stmnt.execute(sql);
 		
 		}
