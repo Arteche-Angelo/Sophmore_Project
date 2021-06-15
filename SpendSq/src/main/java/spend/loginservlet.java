@@ -10,7 +10,8 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;  
 
 import javax.servlet.http.HttpServletRequest;  
-import javax.servlet.http.HttpServletResponse;  
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;  
 
 /**
  * Servlet implementation class loginservlet
@@ -29,14 +30,21 @@ public class loginservlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)  
 	        throws ServletException, IOException {  
 	  
-	    response.setContentType("text/html");  
+		response.setContentType("text/html");  
 	    PrintWriter out = response.getWriter();  
 	          
 	    String n=request.getParameter("uname");  
 	    String p=request.getParameter("psw");  
-	          
+	        
+	    
 	    if(loginmysql.validate(n, p)){  
-	        RequestDispatcher rd=request.getRequestDispatcher("welcomecustomer");  
+	    	user u = new user(n);
+	    	HttpSession session = request.getSession();
+            session.setAttribute("user", u);
+            user tu = (user) session.getAttribute("user");
+            String puser = tu.username;
+            System.out.println("username = " + puser);
+	    	RequestDispatcher rd=request.getRequestDispatcher("welcomecustomer");  
 	        rd.forward(request,response);  
 	    }  
 	    else{  

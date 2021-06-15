@@ -13,13 +13,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;  
 import javax.servlet.http.HttpServletResponse;  
 
-/* Author:  Hannah Latouf v1
+/* Author:  Hannah Latouf 
 */
-/* regservlet */
- 
 
-@WebServlet("/regservlet")
-public class regservlet extends HttpServlet {
+
+@WebServlet("/updateservlet")
+public class updateservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
 	public void doPost(HttpServletRequest request, HttpServletResponse response)  
@@ -35,10 +34,10 @@ public class regservlet extends HttpServlet {
 	    String e=request.getParameter("email");  
 	    String ph=request.getParameter("phonenumber"); 
 	  
-	    
+	    upmysql upm = new upmysql(n, p, f, l, e, ph);
 	          
-	    if(regmysql.reg(n, p,f,l,e,ph)){  
-	        RequestDispatcher rd=request.getRequestDispatcher("regcustomer");  
+	    if(upm.up()){  
+	        RequestDispatcher rd=request.getRequestDispatcher("index.html");  
 	        rd.forward(request,response);  
 	    }  
 	    else{  
@@ -48,8 +47,10 @@ public class regservlet extends HttpServlet {
 	    }  
 	          
 	    out.close();  
-	    }  
-	
-	
-	
+	    
+	    
+	}
 }
+	
+	
+	
