@@ -53,6 +53,13 @@ public class displaybudgets extends HttpServlet {
 			sql="select category,amount from transactions where userprofile_username like '%"+loginservlet.username+"%';";
 			ResultSet rt=stmnt2.executeQuery(sql);
 			ActualTotal=0;
+			 EntertainmentAct = 0;
+			 FoodAct = 0;
+			 HomeAct = 0;
+			 MedicalAct = 0;
+			 TravelAct = 0;
+			 UtilitiesAct = 0;
+			 OtherAct = 0;
 			while(rt.next()) {
 				String cat =rt.getString("category");
 				String amount =rt.getString("amount");
