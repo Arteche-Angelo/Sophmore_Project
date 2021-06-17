@@ -2,6 +2,7 @@ package spend;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class displaytransactions
+ * Servlet implementation class displaybudgets
 
  */
 //author:Angleo Arteche, Michal Huk
@@ -33,7 +34,7 @@ public class displaybudgets extends HttpServlet {
 	static float TravelAct = 0;
 	static float UtilitiesAct = 0;
 	static float OtherAct = 0;
-	static float BudgetsTotal=0;
+	float BudgetsTotal=0;
 	static float ActualTotal=0;
 	static float DiffrenceTotal=0;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,8 +49,10 @@ public class displaybudgets extends HttpServlet {
      		stmnt = conn1.createStatement();
 			sql="select category, limit_budgets from  budgets where userprofile_username like '%"+loginservlet.username+"%';" ;
 			ResultSet rs= stmnt.executeQuery(sql);
+			stmnt2 =conn1.createStatement();
 			sql="select category,amount from transactions where userprofile_username like '%"+loginservlet.username+"%';";
 			ResultSet rt=stmnt2.executeQuery(sql);
+			ActualTotal=0;
 			while(rt.next()) {
 				String cat =rt.getString("category");
 				String amount =rt.getString("amount");
@@ -83,6 +86,7 @@ public class displaybudgets extends HttpServlet {
 			
 			 out.println("<table border=1 style=color:white; >");
 			out.println("<tr ><th>Category</th><th>Budget</th><th>Actual</th><th>Diffrence</th></tr>");
+			BudgetsTotal=0;
              while(rs.next()) {
             	 float dif =0;
             	 
@@ -119,10 +123,11 @@ public class displaybudgets extends HttpServlet {
  					 break;
 
             	 }
-            	 DiffrenceTotal += dif;
+            	 
             	 BudgetsTotal += Float.parseFloat(limit_budgets);
             	 
              }
+             DiffrenceTotal= BudgetsTotal-ActualTotal;
              out.println("<tr><td>Total</td><td>"+BudgetsTotal+"</td><td>"+ActualTotal+"</td><td>"+DiffrenceTotal+"</td></tr>");
              out.println("</table>");  
              out.println("</html></body>");
